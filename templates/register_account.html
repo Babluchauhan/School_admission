@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% comment %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+{% endblock %} {% endcomment %}
+{% block content %}
+<div class="main">
+        <h2>Registration Form</h2>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %} 
+            <label for="first">First Name:</label>
+            <input type="text" id="first" name="first_name" required />
+
+            <label for="last">Last Name:</label>
+            <input type="text" id="last" name="last_name" required />
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"
+                   pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
+                   title="Password must contain at least one number, 
+                           one alphabet, one symbol, and be at 
+                           least 8 characters long" required />
+
+            <label for="repassword">Re-type Password:</label>
+            <input type="password" id="repassword" name="repassword" required />
+
+            <!-- <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">
+                    Male
+                </option>
+                <option value="female">
+                    Female
+                </option>
+                <option value="other">
+                    Other
+                </option>
+            </select> -->
+
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+{% endblock %}

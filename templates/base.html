@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Green Valley School</title>
+    <!-- Load legacy combined stylesheet for homepage sections (hero/about/gallery) -->
+     {% load static %}
+     <!-- Load base stylesheet for common elements (header/footer) -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body class="site-root">
+    <header>
+        <h1>Green Valley School</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="{% url 'login' %}">
+                <button class="btn login" type="button" onclick="location.href='{% url 'login' %}'">Login</button>
+            </a>
+            <a href="{% url 'register' %}">
+            <button class="btn logout">SignUp</button>
+            </a>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+<footer>
+    <p>Contact Us: info@greenvalleyschool.com | +91 9876543210</p>
+    <p>© 2026 Green Valley School. All Rights Reserved.</p>
+</footer>
+</body>
+
+</html>
